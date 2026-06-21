@@ -9,14 +9,17 @@ import {
   Linkedin, Youtube, ChevronUp, LifeBuoy, BadgeCheck,
   CircleDollarSign, Syringe, FlaskConical, Bone,
   ScanLine, Dna, HeartHandshake, ShieldCheck,
-  MonitorHeart, Smile, Star as StarIcon
+  MonitorHeart, Smile, Star as StarIcon,
+  Plus,
+  Flame
 } from "lucide-react";
 
 import familyHero from "../assets/family-hero.png";
 import aaLogo from "../assets/aa-logo.png";
 import essentialBrochure from "../assets/essential-cover.pdf";
+import acrossLogo from "../assets/acrossassist-logo.png";
 
-type Screen = "home" | "essential" | "family" | "comprehensive" | "premium" | "design-system";
+type Screen = "home" | "essential" | "plus" | "comprehensive" | "premium" | "design-system";
 
 // ─── Shared helpers ────────────────────────────────────────────────────────────
 
@@ -121,7 +124,7 @@ function Footer({ setScreen }: { setScreen: (s: Screen) => void }) {
     },
     {
       title: "Plans",
-      links: ["Essential Cover", "Family Cover", "Comprehensive Cover", "Premium Cover", "Compare Plans"],
+      links: ["Essential Cover", "Plus Cover", "Comprehensive Cover", "Premium Cover", "Compare Plans"],
     },
     {
       title: "Claims",
@@ -140,9 +143,12 @@ function Footer({ setScreen }: { setScreen: (s: Screen) => void }) {
           {/* Brand */}
           <div className="lg:col-span-1">
             <div className="flex items-center gap-2.5 mb-4">
-              <div className="w-9 h-9 rounded-xl flex items-center justify-center bg-white/20">
-                <Shield className="w-5 h-5 text-white" />
-              </div>
+                <img
+                  src={acrossLogo}
+                  alt="Across Assist"
+                  className="h-10 w-10 rounded-full object-cover border border-slate-200"
+                  
+                />
               <div>
                 <div className="text-[15px] font-bold">Across Assist</div>
                 <div className="text-[11px] text-white/60">Health & Wellness</div>
@@ -151,13 +157,13 @@ function Footer({ setScreen }: { setScreen: (s: Screen) => void }) {
             <p className="text-sm text-white/70 leading-relaxed mb-6">
               Protecting families across India with comprehensive health and wellness coverage since 2019.
             </p>
-            <div className="flex gap-3">
+            {/* <div className="flex gap-3">
               {[Facebook, Twitter, Instagram, Linkedin, Youtube].map((Icon, i) => (
                 <button key={i} className="w-8 h-8 rounded-lg bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors">
                   <Icon className="w-4 h-4" />
                 </button>
               ))}
-            </div>
+            </div> */}
           </div>
 
           {/* Link columns */}
@@ -176,7 +182,7 @@ function Footer({ setScreen }: { setScreen: (s: Screen) => void }) {
         </div>
 
         <div className="mt-12 pt-8 border-t border-white/15 flex flex-col lg:flex-row items-center justify-between gap-4">
-          <p className="text-sm text-white/50">© 2024 Across Assist. All rights reserved. IRDAI Reg. No. XXXXXX</p>
+          <p className="text-sm text-white/50">© 2026 Across Assist. All rights reserved.</p>
           <div className="flex gap-6">
             {["Privacy Policy", "Terms of Service", "Cookie Policy", "Grievance"].map((item) => (
               <button key={item} className="text-xs text-white/50 hover:text-white/80 transition-colors">{item}</button>
@@ -286,16 +292,16 @@ function FAQSection() {
 // ─── Comparison Table ─────────────────────────────────────────────────────────
 
 const comparisonRows = [
-  { feature: "Hospitalization Cover", essential: "₹3 Lakh", family: "₹5 Lakh", comprehensive: "₹7 Lakh", premium: "₹10 Lakh" },
-  { feature: "Annual Premium", essential: "₹2,999", family: "₹3,499", comprehensive: "₹3,699", premium: "₹4,299" },
-  { feature: "Best For", essential: "Individuals", family: "Young Families", comprehensive: "Growing Families", premium: "Maximum Protection" },
-  { feature: "Coverage Level", essential: "Essential", family: "Enhanced", comprehensive: "Comprehensive", premium: "Premium" },
-  { feature: "Financial Protection", essential: "Good", family: "Better", comprehensive: "Best Value", premium: "Highest" },
-  { feature: "Medical Expense Buffer", essential: "Basic", family: "Moderate", comprehensive: "Strong", premium: "Maximum" },
-  { feature: "Wellness Benefits", essential: true, family: true, comprehensive: true, premium: true },
-  { feature: "Critical Illness Benefit", essential: true, family: true, comprehensive: true, premium: true },
-  { feature: "Maternity Benefit", essential: true, family: true, comprehensive: true, premium: true },
-  { feature: "Advanced Treatments", essential: true, family: true, comprehensive: true, premium: true },
+  { feature: "Hospitalization Cover", essential: "₹3 Lakh", plus: "₹5 Lakh", comprehensive: "₹7 Lakh", premium: "₹10 Lakh" },
+  { feature: "Annual Premium Starting From", essential: "₹2,999", plus: "₹3,499", comprehensive: "₹3,699", premium: "₹4,299" },
+  { feature: "Best For", essential: "Individuals", plus: "Young Families", comprehensive: "Growing Families", premium: "Maximum Protection" },
+  { feature: "Coverage Level", essential: "Essential", plus: "Enhanced", comprehensive: "Comprehensive", premium: "Premium" },
+  { feature: "Financial Protection", essential: "Good", plus: "Better", comprehensive: "Best Value", premium: "Highest" },
+  { feature: "Medical Expense Buffer", essential: "Basic", plus: "Moderate", comprehensive: "Strong", premium: "Maximum" },
+  { feature: "Wellness Benefits", essential: true, plus: true, comprehensive: true, premium: true },
+  { feature: "Critical Illness Benefit", essential: true, plus: true, comprehensive: true, premium: true },
+  { feature: "Maternity Benefit", essential: true, plus: true, comprehensive: true, premium: true },
+  { feature: "Advanced Treatments", essential: true, plus: true, comprehensive: true, premium: true },
 ];
 
 function ComparisonCell({ value, color }: { value: string | boolean; color: string }) {
@@ -307,7 +313,7 @@ function ComparisonCell({ value, color }: { value: string | boolean; color: stri
 function ComparisonTable({ setScreen }: { setScreen: (s: Screen) => void }) {
   const plans = [
     { label: "Essential", color: BLUE, screen: "essential" as Screen },
-    { label: "Family", color: ORANGE, screen: "family" as Screen },
+    { label: "Plus", color: ORANGE, screen: "plus" as Screen },
     { label: "Comprehensive", color: GREEN, screen: "comprehensive" as Screen },
     { label: "Premium", color: PURPLE, screen: "premium" as Screen },
   ];
@@ -389,7 +395,7 @@ const planCards = [
     benefits: ["₹3 Lakh Hospitalization Cover", "Unlimited Doctor Consultations", "Up to 15% Pharmacy Discounts", "Up to 30% Diagnostic Discounts"],
   },
   {
-    id: "family" as Screen,
+    id: "plus" as Screen,
     name: "Plus Cover",
     tagline: "₹5 Lakh Hospitalization Cover",
     color: ORANGE,
@@ -431,12 +437,12 @@ const trustBadges = [
 ];
 
 const whyCards = [
-  { icon: Building2, title: "Cashless Hospitalization", desc: "Direct settlement with 10,000+ network hospitals across India." },
-  { icon: HeartPulse, title: "Critical Illness Cover", desc: "Lump-sum payout on diagnosis of 30+ critical illnesses." },
-  { icon: Leaf, title: "Wellness Benefits", desc: "Gym reimbursements, dietitian access, and wellness vouchers." },
-  { icon: Globe, title: "Nationwide Coverage", desc: "Treatment at any hospital across all 28 states and 8 UTs." },
-  { icon: Baby, title: "Maternity Benefits", desc: "Pre and post-natal care, delivery expenses, and newborn cover." },
-  { icon: Microscope, title: "Advanced Treatments", desc: "Robotic surgery, stem cell therapy, and oral chemotherapy covered." },
+  { icon: Building2, title: "All-in-One Protection", desc: "Health, wellness and hospitalization coverage in a single plan." },
+  { icon: Leaf, title: "Wellness Benefits Included", desc: "Doctor consultations, diagnostics, pharmacy discounts, and nutrition sessions." },
+  { icon: HeartPulse, title: "Mordern Treatment Coverage", desc: "Protection for advanced and specialized medical treatments." },
+  { icon: Clock, title: "Flexible Coverage Choices", desc: "Choose the coverage amount that fits your needs and budget." },
+  { icon: Flame, title: "Family Care Benefits", desc: "Includes maternity and critical illness-related benefits." },
+  { icon: Globe, title: "Affordable Premiums", desc: "Comprehensive protection at a competitive annual cost." },
 ];
 
 // const scenarios = [
@@ -520,10 +526,10 @@ function HomeScreen({ setScreen }: { setScreen: (s: Screen) => void }) {
           <div className="grid lg:grid-cols-2 gap-12 items-center py-20">
             {/* Left */}
             <div>
-              <span className="inline-flex items-center gap-2 text-xs font-semibold tracking-widest uppercase px-4 py-2 rounded-full mb-6 border border-white/20"
+              {/* <span className="inline-flex items-center gap-2 text-xs font-semibold tracking-widest uppercase px-4 py-2 rounded-full mb-6 border border-white/20"
                 style={{ background: "rgba(255,122,0,0.15)", color: "#ffb46b" }}>
                 <ShieldCheck className="w-3.5 h-3.5" /> IRDAI Certified · Trusted by 5000+ Families
-              </span>
+              </span> */}
               <h1 className="text-5xl font-bold text-white leading-tight mb-5">
                 Health Protection<br />
                 <span style={{ color: "#ffb46b" }}>Made Simple</span>
@@ -562,11 +568,11 @@ function HomeScreen({ setScreen }: { setScreen: (s: Screen) => void }) {
 
             {/* Right — family image */}
             <div className="relative hidden lg:block">
-              <div className="relative rounded-[32px] overflow-hidden shadow-2xl">
+              <div className="relative rounded-[32px] overflow-hidden shadow-2xl h-[420px]">
                 <img
                   src={familyHero}
                   alt="Happy healthy Indian family"
-                  className="w-full h-[420px] object-cover"
+                  className="absolute inset-0 w-full h-full object-cover"
                 />
                 <div className="absolute inset-0" />
               </div>
@@ -582,10 +588,10 @@ function HomeScreen({ setScreen }: { setScreen: (s: Screen) => void }) {
                 </div>
               </div>
 
-              <div className="absolute -top-5 -right-5 bg-white rounded-2xl p-3 shadow-xl flex items-center gap-2">
+              {/* <div className="absolute -top-5 -right-5 bg-white rounded-2xl p-3 shadow-xl flex items-center gap-2">
                 <CheckCircle2 className="w-5 h-5" style={{ color: GREEN }} />
                 <span className="text-xs font-semibold text-slate-700">Claim Settled in 48h</span>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
@@ -639,7 +645,10 @@ function HomeScreen({ setScreen }: { setScreen: (s: Screen) => void }) {
                   </ul>
 
                   <button
-                    onClick={() => setScreen(plan.id)}
+                    onClick={() =>{ setScreen(plan.id);
+                      window.scrollTo(0,0);
+                      }
+                    }
                     className="w-full py-3 rounded-xl font-semibold text-sm transition-all hover:opacity-90 flex items-center justify-center gap-2"
                     style={{ background: plan.color, color: "#fff" }}
                   >
@@ -1007,7 +1016,7 @@ function PlanDetailPage({ plan, setScreen }: { plan: PlanConfig; setScreen: (s: 
               Add-Ons
             </span>
             <h2 className="text-3xl font-bold mb-3" style={{ color: BLUE }}>Additional Covers</h2>
-            <p className="text-slate-500">Enhance your protection with optional riders and covers.</p>
+            <p className="text-slate-500">Additional benefits included with your Wellness Protection Plan.</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -1131,7 +1140,7 @@ const essentialPlan: PlanConfig = {
   id: "essential",
   name: "Essential Cover",
   sumAssured: "₹3 Lakh",
-  subtitle: "Designed for Individuals — Solid protection, zero complexity.",
+  subtitle: "Reliable Protection for Everyday Healthcare Needs.",
   badge: null,
   themeColor: BLUE,
   lightBg: "#f0f4ff",
@@ -1176,11 +1185,11 @@ const essentialPlan: PlanConfig = {
   ],
 };
 
-const familyPlan: PlanConfig = {
-  id: "family",
-  name: "Family Cover",
+const plusPlan: PlanConfig = {
+  id: "plus",
+  name: "Plus Cover",
   sumAssured: "₹5 Lakh",
-  subtitle: "Designed for Young Families — One floater, unlimited peace of mind.",
+  subtitle: "Enhanced Coverage for Greater Financial Protection.",
   badge: "Most Popular",
   themeColor: ORANGE,
   lightBg: "#fff4ea",
@@ -1193,22 +1202,22 @@ const familyPlan: PlanConfig = {
     { label: "Ambulance", pct: 10, color: "#ffebd4" },
   ],
   whatsCovers: [
-    { icon: Building2, title: "Hospitalization Expenses", desc: "All inpatient costs for every family member under one floater." },
-    { icon: Stethoscope, title: "Pre & Post Hospitalization", desc: "30 days pre and 60 days post-hospitalization for all members." },
-    { icon: Activity, title: "Day Care Treatments", desc: "600+ day care procedures with no minimum admission requirement." },
-    { icon: Home, title: "Domiciliary Hospitalization", desc: "Home treatment coverage when hospital admission is not feasible." },
-    { icon: Leaf, title: "AYUSH Treatment", desc: "Full AYUSH coverage for all family members." },
-    { icon: Dna, title: "Stem Cell Therapy", desc: "Covered at NABH-accredited hospitals for eligible conditions." },
-    { icon: ScanLine, title: "Robotic Surgery", desc: "Advanced surgical interventions without sub-limits." },
-    { icon: Pill, title: "Oral Chemotherapy", desc: "Equal treatment for oral and IV chemotherapy drugs." },
+    { icon: Building2, title: "Hospitalization Expenses", desc: "Comprehensive hospitalization coverage up to your selected Sum Insured." },
+    { icon: Activity, title: "Day Care Treatments", desc: "Eligible day care procedures covered up to the Sum Insured." },
+    { icon: Home, title: "Domiciliary Hospitalization", desc: "Home-based treatment coverage up to 30% of the Sum Insured." },
+    { icon: Leaf, title: "AYUSH Treatment", desc: "Coverage for AYUSH treatments up to 50% of the Sum Insured." },
+    { icon: Dna, title: "Stem Cell Therapy", desc: "Stem Cell Therapy expenses covered up to the Sum Insured." },
+    { icon: HeartPulse, title: "Robotic Surgery", desc: "Robotic Surgery expenses covered up to the Sum Insured." },
+    { icon: ScanLine, title: "Gamma Knife / Cyberknife Surgery", desc: "Advanced radiation treatment coverage up to the Summ Insured." },
+    { icon: Stethoscope, title: "Critical Illness Benefit", desc: "Additional financial protection through Critical Illness Benefit Cover." },
   ],
   additionalCovers: [
-    { icon: Clock, title: "Pre-existing Diseases", desc: "2-year waiting period. Reduced to 1 year with optional rider." },
-    { icon: Baby, title: "Maternity Cover", desc: "Optional maternity add-on from year 2 onwards." },
-    { icon: Building2, title: "Room Rent", desc: "Single private AC room up to ₹5,000 per day, all members." },
-    { icon: Ambulance, title: "Emergency Ambulance", desc: "₹10,000 per hospitalization covering air and road ambulance." },
-    { icon: HeartPulse, title: "Critical Illness", desc: "Included — lump-sum payout on diagnosis of 30+ conditions." },
-    { icon: FlaskConical, title: "Disease Sublimits", desc: "Enhanced sublimits vs. Essential, reviewed annually." },
+    { icon: Clock, title: "Pre-existing Diseases", desc: "Covered after completion of a 2-year waiting period." },
+    { icon: Baby, title: "Maternity Cover", desc:(<>Covered after a 9-month waiting period. <br/> Normal Delivery: Up to ₹35,000 <br/> C-Section Delivery: Up to ₹50,000</>)},
+    { icon: Building2, title: "Room Rent", desc: (<>Normal Room: 2% of Sum Insured <br/> ICU Room: 4% of Sum Insured</>) },
+    { icon: Ambulance, title: "Emergency Ambulance", desc: "Emergency ambulance expenses covered up to ₹2,500 per event." },
+    { icon: HeartPulse, title: "Critical Illness", desc: "Critical Illness Benefit Cover included under the policy." },
+    { icon: FlaskConical, title: "Disease Sublimits", desc: "Disease-specific sublimits apply as per policy terms and conditions." },
   ],
   pricing: [
     { label: "Individual", annual: "₹3,499", monthly: "₹291" },
@@ -1229,7 +1238,7 @@ const comprehensivePlan: PlanConfig = {
   id: "comprehensive",
   name: "Comprehensive Cover",
   sumAssured: "₹7 Lakh",
-  subtitle: "Designed for Growing Families — More coverage, more life stages covered.",
+  subtitle: "Higher Coverage for Stronger Healthcare Security.",
   badge: "Best Value",
   themeColor: GREEN,
   lightBg: "#f0fdf4",
@@ -1242,22 +1251,22 @@ const comprehensivePlan: PlanConfig = {
     { label: "Ambulance & Other", pct: 10, color: "#bbf7d0" },
   ],
   whatsCovers: [
-    { icon: Building2, title: "Hospitalization Expenses", desc: "Comprehensive inpatient cover for all family members, no capping." },
-    { icon: Stethoscope, title: "Pre & Post Hospitalization", desc: "45 days pre and 90 days post-hospitalization coverage." },
-    { icon: Activity, title: "Day Care Treatments", desc: "All IRDA-approved day care procedures, unlimited." },
-    { icon: Home, title: "Domiciliary Hospitalization", desc: "Home treatment for 30+ conditions when admission isn't viable." },
-    { icon: Leaf, title: "AYUSH Treatment", desc: "Enhanced AYUSH cover with higher sublimits than basic plans." },
-    { icon: Dna, title: "Stem Cell Therapy", desc: "Full cover for bone marrow and peripheral blood stem cell therapy." },
-    { icon: ScanLine, title: "Robotic Surgery", desc: "All approved robotic surgeries with no procedure sublimits." },
-    { icon: Pill, title: "Oral Chemotherapy", desc: "Oral and targeted therapy drugs covered up to sum assured." },
+    { icon: Building2, title: "Hospitalization Expenses", desc: "Comprehensive hospitalization coverage up to your selected Sum Insured." },
+    { icon: Activity, title: "Day Care Treatments", desc: "Eligible day care procedures covered up to the Sum Insured." },
+    { icon: Home, title: "Domiciliary Hospitalization", desc: "Home-based treatment coverage up to 30% of the Sum Insured." },
+    { icon: Leaf, title: "AYUSH Treatment", desc: "Coverage for AYUSH treatments up to 50% of the Sum Insured." },
+    { icon: Dna, title: "Stem Cell Therapy", desc: "Stem Cell Therapy expenses covered up to the Sum Insured." },
+    { icon: HeartPulse, title: "Robotic Surgery", desc: "Robotic Surgery expenses covered up to the Sum Insured." },
+    { icon: ScanLine, title: "Gamma Knife / Cyberknife Surgery", desc: "Advanced radiation treatment coverage up to the Summ Insured." },
+    { icon: Stethoscope, title: "Critical Illness Benefit", desc: "Additional financial protection through Critical Illness Benefit Cover." },
   ],
   additionalCovers: [
-    { icon: Clock, title: "Pre-existing Diseases", desc: "1-year waiting period — the shortest in this category." },
-    { icon: Baby, title: "Maternity Cover", desc: "Included from year 2 — normal and C-section, plus newborn cover." },
-    { icon: Building2, title: "Room Rent", desc: "No room rent sub-limit — choose any room type freely." },
-    { icon: Ambulance, title: "Emergency Ambulance", desc: "₹15,000 per hospitalization including air ambulance." },
-    { icon: HeartPulse, title: "Critical Illness", desc: "Lump-sum payout on 40+ critical illness diagnoses." },
-    { icon: FlaskConical, title: "Disease Sublimits", desc: "No sublimits on most listed diseases — full sum assured applies." },
+    { icon: Clock, title: "Pre-existing Diseases", desc: "Covered after completion of a 2-year waiting period." },
+    { icon: Baby, title: "Maternity Cover", desc:(<>Covered after a 9-month waiting period. <br/> Normal Delivery: Up to ₹35,000 <br/> C-Section Delivery: Up to ₹50,000</>)},
+    { icon: Building2, title: "Room Rent", desc: (<>Normal Room: 2% of Sum Insured <br/> ICU Room: 4% of Sum Insured</>) },
+    { icon: Ambulance, title: "Emergency Ambulance", desc: "Emergency ambulance expenses covered up to ₹2,500 per event." },
+    { icon: HeartPulse, title: "Critical Illness", desc: "Critical Illness Benefit Cover included under the policy." },
+    { icon: FlaskConical, title: "Disease Sublimits", desc: "Disease-specific sublimits apply as per policy terms and conditions." },
   ],
   pricing: [
     { label: "Individual", annual: "₹3,699", monthly: "₹308" },
@@ -1265,12 +1274,12 @@ const comprehensivePlan: PlanConfig = {
     { label: "Family (3+)", annual: "₹7,599", monthly: "₹633" },
   ],
   whyBuy: [
-    { icon: Baby, title: "Maternity Included", desc: "Delivery, C-section, and newborn cover from year 2." },
-    { icon: Microscope, title: "Advanced Treatments", desc: "Robotic surgery, oral chemo, stem cells — all covered." },
-    { icon: Sparkles, title: "Enhanced Wellness", desc: "Premium wellness program with gym, nutrition, and mental health." },
-    { icon: Heart, title: "No Room Rent Cap", desc: "Stay in any room — private, suite, ICU — without sublimits." },
-    { icon: Globe, title: "Nationwide + Global", desc: "Optional international treatment cover upgrade available." },
-    { icon: TrendingUp, title: "Escalating Cover", desc: "10% automatic cover increase each claim-free year." },
+    { icon: ShieldCheck, title: "Smart Financial Protection", desc: "Coverage against unexpected medical expenses." },
+    { icon: Globe, title: "Routine & Emergency Care", desc: "Support for both planned and emergency healthcare needs." },
+    { icon: Clock, title: "Wellnes Benefits", desc: "Doctor consultations, diagnostics, and pharmacy savings." },
+    { icon: BadgeCheck, title: "Affordable Premiums", desc: "Maximum value at a budget-friendly price." },
+    { icon: Heart, title: "Family Care", desc: "Maternity benefits and family-focused protection." },
+    { icon: Zap, title: "Nationwide Assistance", desc: "Healthcare support available across India." },
   ],
 };
 
@@ -1278,8 +1287,8 @@ const premiumPlan: PlanConfig = {
   id: "premium",
   name: "Premium Cover",
   sumAssured: "₹10 Lakh",
-  subtitle: "Designed for Maximum Protection — India's most comprehensive plan.",
-  badge: "Max Protection",
+  subtitle: "Maximum Coverage for Complete Peace of Mind.",
+  badge: "Maximum Protection",
   themeColor: PURPLE,
   lightBg: "#faf5ff",
   focus: ["Maximum Protection", "Advanced Treatments", "Premium Benefits", "Concierge Health"],
@@ -1291,22 +1300,22 @@ const premiumPlan: PlanConfig = {
     { label: "Ambulance & Other", pct: 10, color: "#ddd6fe" },
   ],
   whatsCovers: [
-    { icon: Building2, title: "Hospitalization Expenses", desc: "Unlimited inpatient cover for every listed condition and treatment." },
-    { icon: Stethoscope, title: "Pre & Post Hospitalization", desc: "60 days pre and 180 days post-hospitalization — the widest window." },
-    { icon: Activity, title: "Day Care Treatments", desc: "All day care treatments, zero sublimits, zero paperwork." },
-    { icon: Home, title: "Domiciliary Hospitalization", desc: "Extended home care covered for all eligible conditions." },
-    { icon: Leaf, title: "AYUSH Treatment", desc: "Maximum AYUSH coverage up to full sum assured." },
-    { icon: Dna, title: "Stem Cell Therapy", desc: "All FDA and CDSCO approved stem cell treatments covered." },
-    { icon: ScanLine, title: "Robotic Surgery", desc: "Global standard robotic procedures with no geographic limits." },
-    { icon: Pill, title: "Oral Chemotherapy", desc: "All oral, targeted, and immunotherapy cancer drugs covered." },
+    { icon: Building2, title: "Hospitalization Expenses", desc: "Comprehensive hospitalization coverage up to your selected Sum Insured." },
+    { icon: Activity, title: "Day Care Treatments", desc: "Eligible day care procedures covered up to the Sum Insured." },
+    { icon: Home, title: "Domiciliary Hospitalization", desc: "Home-based treatment coverage up to 30% of the Sum Insured." },
+    { icon: Leaf, title: "AYUSH Treatment", desc: "Coverage for AYUSH treatments up to 50% of the Sum Insured." },
+    { icon: Dna, title: "Stem Cell Therapy", desc: "Stem Cell Therapy expenses covered up to the Sum Insured." },
+    { icon: HeartPulse, title: "Robotic Surgery", desc: "Robotic Surgery expenses covered up to the Sum Insured." },
+    { icon: ScanLine, title: "Gamma Knife / Cyberknife Surgery", desc: "Advanced radiation treatment coverage up to the Summ Insured." },
+    { icon: Stethoscope, title: "Critical Illness Benefit", desc: "Additional financial protection through Critical Illness Benefit Cover." },
   ],
   additionalCovers: [
-    { icon: Clock, title: "Pre-existing Diseases", desc: "Immediate cover from day 1 with our Instant Cover upgrade." },
-    { icon: Baby, title: "Maternity Cover", desc: "Comprehensive maternity from year 1, including IVF and fertility." },
-    { icon: Building2, title: "Room Rent", desc: "No sub-limit, no co-pay — presidential suite if needed." },
-    { icon: Ambulance, title: "Emergency Ambulance", desc: "₹20,000 with dedicated air ambulance coordination service." },
-    { icon: HeartPulse, title: "Critical Illness", desc: "50+ critical illness conditions, lump-sum payout, zero deductible." },
-    { icon: FlaskConical, title: "Disease Sublimits", desc: "Zero sublimits — full sum assured for every listed disease." },
+    { icon: Clock, title: "Pre-existing Diseases", desc: "Covered after completion of a 2-year waiting period." },
+    { icon: Baby, title: "Maternity Cover", desc:(<>Covered after a 9-month waiting period. <br/> Normal Delivery: Up to ₹35,000 <br/> C-Section Delivery: Up to ₹50,000</>)},
+    { icon: Building2, title: "Room Rent", desc: (<>Normal Room: 2% of Sum Insured <br/> ICU Room: 4% of Sum Insured</>) },
+    { icon: Ambulance, title: "Emergency Ambulance", desc: "Emergency ambulance expenses covered up to ₹2,500 per event." },
+    { icon: HeartPulse, title: "Critical Illness", desc: "Critical Illness Benefit Cover included under the policy." },
+    { icon: FlaskConical, title: "Disease Sublimits", desc: "Disease-specific sublimits apply as per policy terms and conditions." },
   ],
   pricing: [
     { label: "Individual", annual: "₹4,299", monthly: "₹358" },
@@ -1314,18 +1323,18 @@ const premiumPlan: PlanConfig = {
     { label: "Family (3+)", annual: "₹8,900", monthly: "₹741" },
   ],
   whyBuy: [
-    { icon: Award, title: "Dedicated Health Manager", desc: "Personal health concierge for appointments, second opinions, claims." },
-    { icon: Brain, title: "Mental Health Cover", desc: "Psychiatry, therapy, and counseling sessions covered." },
-    { icon: Eye, title: "Vision & Dental", desc: "Annual dental and vision care included at no extra cost." },
-    { icon: Globe, title: "International Treatment", desc: "Treatment at select hospitals globally for listed conditions." },
-    { icon: Sparkles, title: "Premium Wellness Suite", desc: "Spa, fitness, nutrition, and mental wellness — all reimbursable." },
-    { icon: Zap, title: "Priority Claims", desc: "Dedicated claims desk — cashless in 1 hour, reimbursement in 3 days." },
+    { icon: ShieldCheck, title: "Smart Financial Protection", desc: "Coverage against unexpected medical expenses." },
+    { icon: Globe, title: "Routine & Emergency Care", desc: "Support for both planned and emergency healthcare needs." },
+    { icon: Clock, title: "Wellnes Benefits", desc: "Doctor consultations, diagnostics, and pharmacy savings." },
+    { icon: BadgeCheck, title: "Affordable Premiums", desc: "Maximum value at a budget-friendly price." },
+    { icon: Heart, title: "Family Care", desc: "Maternity benefits and family-focused protection." },
+    { icon: Zap, title: "Nationwide Assistance", desc: "Healthcare support available across India." },
   ],
 };
 
 const PLAN_MAP: Record<string, PlanConfig> = {
   essential: essentialPlan,
-  family: familyPlan,
+  plus: plusPlan,
   comprehensive: comprehensivePlan,
   premium: premiumPlan,
 };
@@ -1474,7 +1483,7 @@ function DesignSystemPage() {
                 <Shield className="w-5 h-5" style={{ color: ORANGE }} />
               </div>
               <div className="text-xs font-semibold mb-0.5 uppercase tracking-wide" style={{ color: ORANGE }}>Best for Families</div>
-              <h3 className="text-base font-bold mb-2 text-slate-800">Family Cover</h3>
+              <h3 className="text-base font-bold mb-2 text-slate-800">Plus Cover</h3>
               <p className="text-xs text-slate-500 leading-relaxed mb-4">Complete family protection with floater benefits and critical illness cover.</p>
               <button className="w-full py-2.5 rounded-xl text-xs font-bold text-white" style={{ background: ORANGE }}>View Plan →</button>
             </div>
@@ -1554,7 +1563,7 @@ function DesignSystemPage() {
                 className="w-full px-4 py-3 rounded-xl border-2 border-slate-200 text-sm outline-none bg-slate-50 focus:border-[#FF7A00] appearance-none"
               >
                 <option value="essential">Essential Cover</option>
-                <option value="family">Family Cover</option>
+                <option value="plus">Plus Cover</option>
                 <option value="comprehensive">Comprehensive Cover</option>
                 <option value="premium">Premium Cover</option>
               </select>
