@@ -155,7 +155,7 @@ function Footer({ setScreen }: { setScreen: (s: Screen) => void }) {
               </div>
             </div>
             <p className="text-sm text-white/70 leading-relaxed mb-6">
-              Protecting families across India with comprehensive health and wellness coverage since 2019.
+              Protecting families across India with comprehensive health and wellness coverage.
             </p>
             {/* <div className="flex gap-3">
               {[Facebook, Twitter, Instagram, Linkedin, Youtube].map((Icon, i) => (
@@ -391,8 +391,8 @@ const planCards = [
     lightBg: "#f0f4ff",
     badge: null,
     icon: Shield,
-    description: "Affordable health protection with wellness and hospitalization benefits for everyday healthcare needs.",
-    benefits: ["₹3 Lakh Hospitalization Cover", "Unlimited Doctor Consultations", "Up to 15% Pharmacy Discounts", "Up to 30% Diagnostic Discounts"],
+    description: "Affordable entry-level protection.",
+    benefits: ["Wellness Benefits", "Critical Illness Cover", "Advanced Treatments"],
   },
   {
     id: "plus" as Screen,
@@ -402,8 +402,8 @@ const planCards = [
     lightBg: "#fff4ea",
     badge: "Most Popular",
     icon: Users,
-    description: "Enhanced coverage designed to provide greater financial protection against unexpected medical expenses.",
-    benefits: ["₹5 Lakh Hospitalization Cover", "Unlimited Doctor Consultations", "Up to 15% Pharmacy Discounts", "Up to 30% Diagnostic Discounts"],
+    description: "More coverage for added peace of mind.",
+    benefits: ["Wellness Benefits", "Critical Illness Cover", "Advanced Treatments"],
   },
   {
     id: "comprehensive" as Screen,
@@ -413,8 +413,8 @@ const planCards = [
     lightBg: "#f0fdf4",
     badge: "Best Value",
     icon: HeartPulse,
-    description: "Higher coverage for individuals and families seeking stronger financial security and healthcare protection.",
-    benefits: ["₹7 Lakh Hospitalization Cover", "Unlimited Doctor Consultations", "Up to 15% Pharmacy Discounts", "Up to 30% Diagnostic Discounts"],
+    description: "Higher Protection at Exceptional value.",
+    benefits: ["Wellness Benefits", "Critical Illness Cover", "Advanced Treatments"],
   },
   {
     id: "premium" as Screen,
@@ -424,8 +424,8 @@ const planCards = [
     lightBg: "#faf5ff",
     badge: "Maximum Protection",
     icon: Award,
-    description: "Maximum hospitalization coverage with comprehensive health and wellness benefits.",
-    benefits: ["₹10 Lakh Hospitalization Cover", "Unlimited Doctor Consultations", "Up to 15% Pharmacy Discounts", "Up to 30% Diagnostic Discounts"],
+    description: "Maximum Protection with the Highest cover.",
+    benefits: [ "Wellness Benefits", "Critical Illness Cover", "Advanced Treatments"],
   },
 ];
 
