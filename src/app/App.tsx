@@ -18,8 +18,20 @@ import familyHero from "../assets/family-hero.png";
 import aaLogo from "../assets/aa-logo.png";
 import essentialBrochure from "../assets/essential-cover.pdf";
 import acrossLogo from "../assets/acrossassist-logo.png";
+import essentialPdf from "../assets/essential-policy.pdf";
+import plusPdf from "../assets/plus-policy.pdf";
+import comprehensivePdf from "../assets/comprehensive-policy.pdf";
+import premiumPdf from "../assets/premium-policy.pdf";
 
 type Screen = "home" | "essential" | "plus" | "comprehensive" | "premium" | "design-system";
+
+
+const brochures = {
+  essential: essentialPdf,
+  plus: plusPdf,
+  comprehensive: comprehensivePdf,
+  premium: premiumPdf,
+};
 
 // ─── Shared helpers ────────────────────────────────────────────────────────────
 
@@ -935,7 +947,7 @@ function PlanDetailPage({ plan, setScreen }: { plan: PlanConfig; setScreen: (s: 
                   Buy Now
                 </button>
                 <a
-                  href={essentialBrochure}
+                  href={brochures[plan.id as keyof typeof brochures]}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="px-8 py-3.5 rounded-2xl font-bold text-base border-2 border-white/40 text-white hover:bg-white/10 transition-all inline-flex items-center justify-center"
